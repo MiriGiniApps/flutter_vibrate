@@ -2,15 +2,11 @@ import Flutter
 import UIKit
 import AudioToolbox
 
-func isSimulator() -> Bool {
-    #if targetEnvironment(simulator)
-    return true
-    #else
-    return false
-    #endif
-}
-
-private let isDevice = !isSimulator()
+#if targetEnvironment(simulator)
+private let isDevice = false
+#else
+private let isDevice = true
+#endif
     
 public class SwiftVibratePlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
